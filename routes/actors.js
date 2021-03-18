@@ -42,7 +42,7 @@ router.post("/login", (req, res) => {
       if (err) return res.status(400).send(err);
       res.cookie("authExp", actor.tokenExp);
       res.cookie("auth", actor.token).status(200).json({
-        로그인: true,
+        로그인: "성공",
         아이디: actor._id,
       });
     });

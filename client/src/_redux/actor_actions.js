@@ -1,5 +1,10 @@
 import axios from "axios";
-import { LOGIN_ACTOR, REGISTER_ACTOR, LOGOUT_ACTOR } from "../_actions/types";
+import {
+  LOGIN_ACTOR,
+  REGISTER_ACTOR,
+  LOGOUT_ACTOR,
+  AUTH_ACTOR,
+} from "../_redux/types";
 import { ACTOR_SERVER } from "../../src/config";
 
 export const registerActor = (data) => {
@@ -24,11 +29,22 @@ export const loginActor = (data) => {
   };
 };
 
-export const auth = (data) => {
+export const auth = () => {
   const request = axios.get(`${ACTOR_SERVER}/auth`).then((res) => res.data);
+
+  return {
+    type: AUTH_ACTOR,
+    payload: request,
+  };
+};
+
+export function logoutActor() {
+  const request = axios
+    .get(`${ACTOR_SERVER}/logout`)
+    .then((response) => response.data);
 
   return {
     type: LOGOUT_ACTOR,
     payload: request,
   };
-};
+}

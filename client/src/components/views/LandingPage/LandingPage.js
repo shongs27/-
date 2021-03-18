@@ -1,7 +1,10 @@
 import React from "react";
 import { FaAndroid } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 function LandingPage() {
+  const state = useSelector((state) => state);
+  console.log(state);
   return (
     <>
       <div className="app">
